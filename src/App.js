@@ -9,32 +9,20 @@ import 'semantic-ui-css/semantic.min.css'
 
 
 /**
- * Navbar components to anchor left.
- *
- * @type {*[]}
- */
-const leftItems = [
-  { as: Link, content: "Home", to: "/" },
-  { as: Link, content: "Band setup", to: "/setup/" },
-  { as: Link, content: "Discover bands", to: "/discover/"}
-];
-
-/**
- * Navbar components to anchor right. Placeholders.
- *
- * @type {*[]}
- */
-const rightItems = [
-  { as: "a", content: "Login", key: "login" },
-  { as: "a", content: "Register", key: "register" }
-];
-
-
-/**
  * Main application component for the UI.
  */
 class App extends Component {
 
+  leftItems = [
+    { as: Link, content: "Home", to: "/" },
+    { as: Link, content: "Band setup", to: "/setup/" },
+    { as: Link, content: "Discover bands", to: "/discover/"}
+  ];
+
+  rightItems = [
+    { as: "a", content: "Login", key: "login" },
+    { as: "a", content: "Register", key: "register" }
+  ];
 
   /**
    * Renders main page content.
@@ -46,14 +34,16 @@ class App extends Component {
         <div>
           <Router>
             <AppNavbar
-              leftItems={leftItems}
-              rightItems={rightItems}
+              leftItems={this.leftItems}
+              rightItems={this.rightItems}
             >
               <Image src="https://react.semantic-ui.com/logo.png" />
             </AppNavbar>
-            <Route path="/" exact component={Discover}/>
-            <Route path="/setup/" component={Setup}/>
-            <Route path="/discover/" component={Discover}/>
+            <div id="router content">
+              <Route path="/" exact component={Discover}/>
+              <Route path="/setup/" component={Setup}/>
+              <Route path="/discover/" component={Discover}/>
+            </div>
           </Router>
       </div>);
   }

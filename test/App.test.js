@@ -1,19 +1,34 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from '../src/App';
+import {shallow} from 'enzyme';
+import AppNavbar from "../src/global/AppNavbar";
+import {Route} from "react-router";
+import Discover from "../src/band/Discover";
+import Setup from "../src/band/Setup";
+import {Image} from "semantic-ui-react";
+import "jest-enzyme";
 
 
 describe("App", () => {
-    it('renders the navbar', () => {
-        const div = document.createElement('div');
-        ReactDOM.render(<App />, div);
-        ReactDOM.unmountComponentAtNode(div);
+    it("renders the navbar", () => {
+        const wrapper = shallow(<App/>);
+        expect(wrapper).toContainReact(
+            <AppNavbar
+                leftItems={wrapper.instance().leftItems}
+                rightItems={wrapper.instance().rightItems}
+            >
+                <Image src="https://react.semantic-ui.com/logo.png"/>
+            </AppNavbar>);
     });
 
-    it('renders the routes', () => {
-        const div = document.createElement('div');
-        ReactDOM.render(<App />, div);
-        ReactDOM.unmountComponentAtNode(div);
+    it("renders the routes", () => {
+        const wrapper = shallow(<App/>);
+        expect(wrapper).toContainReact(
+            <div id="router content">
+                <Route path="/" exact component={Discover}/>
+                <Route path="/setup/" component={Setup}/>
+                <Route path="/discover/" component={Discover}/>
+            </div>);
     });
 
 });
