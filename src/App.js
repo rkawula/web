@@ -4,7 +4,6 @@ import AppNavbar from "./global/AppNavbar";
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import Discover from "./band/Discover";
 import Setup from "./band/Setup";
-import { Image } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css'
 
 
@@ -37,7 +36,6 @@ class App extends Component {
               leftItems={this.leftItems}
               rightItems={this.rightItems}
             >
-              <Image src="https://react.semantic-ui.com/logo.png" />
             </AppNavbar>
             <div id="router content">
               <Route path="/" exact component={Discover}/>
