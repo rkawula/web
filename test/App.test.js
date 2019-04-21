@@ -5,7 +5,6 @@ import AppNavbar from "../src/global/AppNavbar";
 import {Route} from "react-router";
 import Discover from "../src/band/Discover";
 import Setup from "../src/band/Setup";
-import {Image} from "semantic-ui-react";
 import "jest-enzyme";
 
 
@@ -17,7 +16,6 @@ describe("App", () => {
                 leftItems={wrapper.instance().leftItems}
                 rightItems={wrapper.instance().rightItems}
             >
-                <Image src="https://react.semantic-ui.com/logo.png"/>
             </AppNavbar>);
     });
 
