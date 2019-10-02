@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react'
+import { Form, Header } from 'semantic-ui-react'
 
 
 /**
  * Band create page.
  */
-class Setup extends Component {
+class StepFlow1 extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            bandName: '',
             loading: false
         };
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
     }
 
     /**
      * Sends band creation request to the API. Will either redirect on success or display an error.
      */
-    handleSubmit() {
+    handleSubmit = () => {
         // TODO: send submit request
         this.setState({
             loading: true
@@ -28,28 +27,29 @@ class Setup extends Component {
             this.setState({
                 loading: false
             });
-        }, 500);
-    }
+            this.props.handleSubmitBandName(this.state.bandName);
+        }, 400);
+    };
 
     /**
      * Handles changes to the text input field.
      * @returns {*}
      */
-    handleChange(event) {
+    handleChange = (event) => {
         this.setState({
-            band_name: event.target.value
+            bandName: event.target.value
         });
-    }
+    };
 
     render() {
         return (
-            <div id="band-setup">
+            <div id="band-setup-step-1">
                 <Form
                     loading={this.state.loading}
                     onSubmit={this.handleSubmit}
                 >
                     <Form.Field>
-                        <label>Enter band name</label>
+                        <Header as="h1">Enter band name</Header>
                         <input
                             name="band-name"
                             onChange={this.handleChange}
@@ -61,4 +61,4 @@ class Setup extends Component {
     }
 }
 
-export default Setup;
+export default StepFlow1;
