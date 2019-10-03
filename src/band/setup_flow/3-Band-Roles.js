@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Form, Header, Icon } from 'semantic-ui-react';
+import {Form, Grid, Header, Icon} from 'semantic-ui-react';
 import {BandRoleSelector} from './BandRoleSelector';
-import {BandMemberCard} from "./BandMemberCard";
 
 const ROLES = [
     {
@@ -100,30 +99,35 @@ export default class StepFlow3 extends Component {
                 loading={loading}
                 onSubmit={this.handleSubmit}
             >
-                <Form.Field>
-                    <Header as="h1">Add your roles</Header>
+                <Grid columns='two' divided>
+                <Header as="h1">Your roles</Header>
+                <Grid.Row>
                     {[...userRoles].map((role, position) =>
-                        <BandMemberCard
-                            role={role}
-                            name="You"
-                            skill="Beginner"
-                            description="Lorem ipsum"
-                            key={`user-role-${role}-${position}`}
-                        />
+                        <Grid.Column key={`extra-roles-${position}`}>
+                            <BandRoleSelector
+                                option={role}
+                                roles={ROLES}
+                                disabled={true}
+                            />
+                        </Grid.Column>
                     )}
-                </Form.Field>
-                {numberOfExtraRoles ? [...Array(numberOfExtraRoles)].map((_, position) =>
-                    <div key={`extra-roles-${position}`}>
-                        <BandRoleSelector
-                            option={selectedBandRoles[position]}
-                            roles={ROLES}
-                            onChange={(event, data) => this.handleSelectRole(event, data, position)}/>
-                        <Icon name="delete" size="big" onClick={(event, data) => this.handleDeleteRole(event, data, position)}/>
-                        {position}
-                        <br/>
-                    </div>
-                ) : null}
-                <Icon name="add circle" size="big" onClick={this.handleAddRole}/>
+                </Grid.Row>
+                <Header as="h1">Add bandmate roles</Header>
+                <Grid.Row>
+                    {numberOfExtraRoles ? [...Array(numberOfExtraRoles)].map((_, position) =>
+                        <Grid.Column key={`extra-roles-${position}`}>
+                            <BandRoleSelector
+                                option={selectedBandRoles[position]}
+                                roles={ROLES}
+                                onChange={(event, data) => this.handleSelectRole(event, data, position)}/>
+                            <Icon name="delete" size="big" onClick={
+                                (event, data) => this.handleDeleteRole(event, data, position)}>Remove</Icon>
+                            <br/>
+                        </Grid.Column>
+                    ) : null}
+                    </Grid.Row>
+                </Grid>
+                <Icon name="add circle" size="big" onClick={this.handleAddRole}>Add</Icon>
                 <Form.Button>Save</Form.Button>
             </Form>
         </div>;
