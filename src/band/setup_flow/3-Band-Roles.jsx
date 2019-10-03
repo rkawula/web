@@ -115,8 +115,9 @@ export default class StepFlow3 extends Component {
             <Grid columns="two" divided>
               <Header as="h1">Your roles</Header>
               <Grid.Row>
-                {[...userRoles].map((role) => (
-                  <Grid.Column key={`my-roles-${role}`}>
+                {[...userRoles].map((role, position) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <Grid.Column key={`my-roles-${role}-${position}`}>
                     <BandRoleSelector
                       option={role}
                       roles={ROLES}
@@ -128,7 +129,8 @@ export default class StepFlow3 extends Component {
               <Header as="h1">Add bandmate roles</Header>
               <Grid.Row>
                 {numberOfExtraRoles ? [...Array(numberOfExtraRoles)].map((_, position) => (
-                  <Grid.Column key={`unassigned-roles-${new Date()}`}>
+                  // eslint-disable-next-line react/no-array-index-key
+                  <Grid.Column key={`unassigned-roles-${position}`}>
                     <BandRoleSelector
                       option={selectedBandRoles[position]}
                       roles={ROLES}

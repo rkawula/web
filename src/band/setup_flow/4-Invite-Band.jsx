@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
   Header, Form, Item, Grid,
@@ -31,6 +32,7 @@ export default class StepFlow4 extends React.Component {
     };
 
     render() {
+      /* eslint-disable react/no-array-index-key */
       const { loading, userRoles, bandRoles } = this.state;
       return (
         <div id="band-setup-step-4">
@@ -41,9 +43,9 @@ export default class StepFlow4 extends React.Component {
             <Grid columns="three" divided>
               <Header as="h1">Your roles</Header>
               <Grid.Row>
-                {userRoles && [...userRoles].map((role) => (
+                {userRoles && [...userRoles].map((role, position) => (
                   <Grid.Column
-                    key={`your-role-${role}`}
+                    key={`your-role-${role}-${position}`}
                   >
                     <BandMemberCard
                       role={role}
@@ -57,10 +59,9 @@ export default class StepFlow4 extends React.Component {
               <Header as="h1">Invite bandmates</Header>
               <Grid.Row>
                 {/* TODO: add unique ID to member/roles */}
-
-                {bandRoles && bandRoles.map((role) => (
+                {bandRoles && bandRoles.map((role, position) => (
                   <Grid.Column
-                    key={`member-${role}`}
+                    key={`member-${role}-${position}`}
                   >
                     <Item.Group link>
                       <InviteBandMemberItem
@@ -76,6 +77,7 @@ export default class StepFlow4 extends React.Component {
           </Form>
         </div>
       );
+      /* eslint-enable react/no-array-index-key */
     }
 }
 
