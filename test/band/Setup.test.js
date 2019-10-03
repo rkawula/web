@@ -4,7 +4,6 @@ import StepFlow1 from "../../src/band/setup_flow/1-Band-Name";
 import "jest-enzyme";
 import { Form } from 'semantic-ui-react'
 
-
 describe("StepFlow1", () => {
     it("renders the form", () => {
         const wrapper = shallow(<StepFlow1/>);

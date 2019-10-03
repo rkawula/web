@@ -55,7 +55,6 @@ class App extends Component {
   render() {
     const {completedBand, openModal} = this.state;
     return (
-        <div>
           <Router>
             <AppNavbar
               leftItems={this.leftItems}
@@ -72,8 +71,7 @@ class App extends Component {
                 closeModal={this.closeModal}
                 openModal={openModal}
             />
-          </Router>
-      </div>);
+          </Router>);
   }
 }
 
