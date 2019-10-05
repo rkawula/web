@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Form, Card, Header } from 'semantic-ui-react';
+import {
+  Form, Card, Header, Image, Grid,
+} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 
@@ -59,21 +61,26 @@ export default class StepFlow2 extends Component {
           >
             <Form.Field>
               <Header as="h1">Select your roles</Header>
-              <Card.Group>
-
-                {[...FAKE_ROLES].map((role, i) => (
+              <Grid columns="three">
+                <Header as="h1">Your roles</Header>
+                <Grid.Row>
+                  {[...FAKE_ROLES].map((role, i) => (
                   // eslint-disable-next-line react/no-array-index-key
-                  <div key={`select-your-role-${role}-${i}`}>
-                    <Card
-                      onClick={() => this.handleChange(role)}
-                      raised={userRoles.has(role)}
-                    >
-                      <Card.Header>{role}</Card.Header>
-                      <Card.Meta>Beginner</Card.Meta>
-                    </Card>
-                  </div>
-                ))}
-              </Card.Group>
+                    <Grid.Column key={`select-your-role-${role}-${i}`}>
+                      <Card
+                        onClick={() => this.handleChange(role)}
+                        raised={userRoles.has(role)}
+                      >
+                        <Image src="https://react.semantic-ui.com/images/avatar/large/matthew.png" wrapped ui={false} />
+                        <Card.Content>
+                          <Card.Header>{role}</Card.Header>
+                          <Card.Meta>Beginner</Card.Meta>
+                        </Card.Content>
+                      </Card>
+                    </Grid.Column>
+                  ))}
+                </Grid.Row>
+              </Grid>
             </Form.Field>
             <Form.Button>Submit</Form.Button>
           </Form>

@@ -4,7 +4,7 @@ import {mount} from 'enzyme';
 import {MemoryRouter} from "react-router";
 import "jest-enzyme";
 import Home from "../../src/user/Home";
-import Discover from "../../src/band/Discover";
+import Discovery from "../../src/discovery/Discovery";
 import StepContainer from "../../src/band/setup_flow/StepContainer";
 
 describe("AppNavbar", () => {
@@ -22,7 +22,7 @@ describe("AppNavbar", () => {
             <MemoryRouter initialEntries={["/discover"]}>
                 <App/>
             </MemoryRouter>);
-        expect(wrapper.find(Discover)).toHaveLength(1);
+        expect(wrapper.find(Discovery)).toHaveLength(1);
     });
 
     it("routes /setup/", () => {
