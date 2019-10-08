@@ -13,7 +13,7 @@ describe('App', () => {
     const leftItems = [
       { as: Link, content: 'Home', to: '/' },
       { as: Link, content: 'Band setup', to: '/setup/' },
-      { as: Link, content: 'Discover bands', to: '/discover/' },
+      { as: Link, content: 'Discovery', to: '/discovery/' },
     ];
 
     const rightItems = [
@@ -32,7 +32,7 @@ describe('App', () => {
 
   it('contains the routes', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find(Route)).toHaveLength(3);
+    expect(wrapper.find(Route)).toHaveLength(4);
   });
 
   it('contains the NewBandPageTakeover', () => {

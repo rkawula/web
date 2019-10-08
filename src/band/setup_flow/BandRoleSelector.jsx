@@ -17,7 +17,7 @@ export default function BandRoleSelector({ option, roles, onChange }) {
 }
 
 BandRoleSelector.propTypes = {
-  option: PropTypes.string.isRequired,
+  option: PropTypes.string,
   roles: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string,
@@ -27,4 +27,8 @@ BandRoleSelector.propTypes = {
     }),
   ).isRequired,
   onChange: PropTypes.func.isRequired,
+};
+
+BandRoleSelector.defaultProps = {
+  option: 'undefined',
 };

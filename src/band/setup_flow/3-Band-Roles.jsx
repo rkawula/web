@@ -122,6 +122,7 @@ export default class StepFlow3 extends Component {
                       option={role}
                       roles={ROLES}
                       disabled
+                      onChange={() => {}}
                     />
                   </Grid.Column>
                 ))}
@@ -160,5 +161,5 @@ Remove
 
 StepFlow3.propTypes = {
   handleSubmitBandRoles: PropTypes.func.isRequired,
-  userRoles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  userRoles: PropTypes.instanceOf(Set).isRequired,
 };
