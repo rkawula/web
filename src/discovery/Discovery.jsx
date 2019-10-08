@@ -3,6 +3,9 @@ import { Redirect } from 'react-router-dom';
 import { Card, Grid, Image } from 'semantic-ui-react';
 
 export default class Discovery extends React.Component {
+
+
+
   constructor(props) {
     super(props);
     this.state = {
