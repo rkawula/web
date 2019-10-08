@@ -1,0 +1,7 @@
+node_modules/*
+.gitignore
+config/*
+test/*
+__mocks__/*
+scripts/*
+coverage/*
