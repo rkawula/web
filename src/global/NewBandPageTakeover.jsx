@@ -3,9 +3,9 @@ import {
   Modal, Image, Header, Button, Icon,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { BAND } from '../util/props';
 
-
-export default function NewBandPageTakeover({ closeModal, openModal, band }) {
+export default function NewBandPageTakeover({ closeModal, openModal, band: newBand }) {
   return (
     <Modal
       centered
@@ -22,23 +22,23 @@ export default function NewBandPageTakeover({ closeModal, openModal, band }) {
           <Header as="h2">Recap</Header>
           <p>
             <Header as="h3">Band Name</Header>
-            {band.bandName}
+            {newBand.bandName}
           </p>
           <p>
             <Header as="h3">Your Roles</Header>
-            {band && band.userRoles && [...band.userRoles].join(', ')}
+            {newBand && newBand.userRoles && [...newBand.userRoles].join(', ')}
           </p>
           <p>
             <Header as="h3">Other band members</Header>
-            {band && band.bandRoles && [...band.bandRoles].join(', ')}
+            {newBand && newBand.bandRoles && [...newBand.bandRoles].join(', ')}
           </p>
           <p>
             <Header as="h3">Genres</Header>
-            {band && band.genres && [...band.genres].join(', ')}
+            {newBand && newBand.genres && [...newBand.genres].join(', ')}
           </p>
           <p>
             <Header as="h3">Inspirations</Header>
-            {band && band.inspirations && [...band.inspirations].join(', ')}
+            {newBand && newBand.inspirations && [...newBand.inspirations].join(', ')}
           </p>
         </Modal.Description>
       </Modal.Content>
@@ -55,11 +55,5 @@ export default function NewBandPageTakeover({ closeModal, openModal, band }) {
 NewBandPageTakeover.propTypes = {
   closeModal: PropTypes.func.isRequired,
   openModal: PropTypes.bool.isRequired,
-  band: PropTypes.shape({
-    bandName: PropTypes.string,
-    userRoles: PropTypes.instanceOf(Set),
-    bandRoles: PropTypes.arrayOf(PropTypes.string),
-    genres: PropTypes.arrayOf(PropTypes.string),
-    inspirations: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
+  band: PropTypes.shape(BAND).isRequired,
 };
