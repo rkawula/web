@@ -6,9 +6,12 @@ import PropTypes from 'prop-types';
 import { BAND } from '../util/props';
 
 
-export default function BandCard({ band }) {
+export default function BandCard({ band, onBandClick, active }) {
   return (
-    <Card>
+    <Card
+      onClick={() => onBandClick(band.bandName)}
+      raised={active}
+    >
       <Image src="https://react.semantic-ui.com/images/avatar/large/matthew.png" wrapped ui={false} />
       <Card.Content>
         <Card.Header>{band.bandName}</Card.Header>
@@ -19,17 +22,12 @@ export default function BandCard({ band }) {
           {band.description}
         </Card.Description>
       </Card.Content>
-      <Card.Content extra>
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a>
-          <Icon name="user" />
-          22 Friends
-        </a>
-      </Card.Content>
     </Card>
   );
 }
 
 BandCard.propTypes = {
   band: PropTypes.shape(BAND).isRequired,
+  onBandClick: PropTypes.func.isRequired,
+  active: PropTypes.bool.isRequired,
 };
