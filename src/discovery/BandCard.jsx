@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Card, Image, Icon,
+  Card, Image,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { BAND } from '../util/props';

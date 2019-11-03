@@ -1,7 +1,9 @@
 import React from 'react';
 import {
-  Grid, Dimmer, Loader,
+  Grid, Dimmer, Loader, Button,
 } from 'semantic-ui-react';
+import { Redirect } from 'react-router-dom';
+
 import BandGrid from './BandGrid';
 
 const FAKE_BANDS = [
@@ -37,6 +39,7 @@ export default class FindBand extends React.Component {
     this.state = {
       loading: false,
       currentBand: '',
+      redirectHome: false,
     };
   }
 
@@ -64,26 +67,34 @@ export default class FindBand extends React.Component {
   };
 
   render() {
-    const { loading, currentBand } = this.state;
+    const { loading, currentBand, redirectHome } = this.state;
 
+    if (redirectHome) {
+      return (
+        <Redirect to="/" />
+      );
+    }
     return (
-      <Grid columns={2} relaxed="very" stackable>
-        <Dimmer
-          active={loading}
-        >
-          <Loader
-            size="massive"
+      <>
+        <Grid columns={2} relaxed="very" stackable>
+          <Dimmer
+            active={loading}
           >
-            Finding Bands...
-          </Loader>
-        </Dimmer>
-        <BandGrid
-          loading={loading}
-          bands={FAKE_BANDS}
-          currentBand={currentBand}
-          onBandClick={this.onBandClick}
-        />
-      </Grid>
+            <Loader
+              size="massive"
+            >
+              Finding Bands...
+            </Loader>
+          </Dimmer>
+          <BandGrid
+            loading={loading}
+            bands={FAKE_BANDS}
+            currentBand={currentBand}
+            onBandClick={this.onBandClick}
+          />
+        </Grid>
+        <Button onClick={() => this.setState({ redirectHome: true })}>Done</Button>
+      </>
     );
   }
 }
