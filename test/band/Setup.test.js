@@ -16,6 +16,7 @@ describe("StepFlow1", () => {
           <Form.Field>
             <Header as="h1">Enter band name</Header>
             <Input
+              id="band-name-input"
               name="band-name"
               onChange={wrapper.instance().handleChange}
               maxLength="120"
